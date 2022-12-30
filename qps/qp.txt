@@ -1,0 +1,71 @@
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Arquivo de regras:
+	O sistema conta com um arquivo de regras "rules.qp". Neste arquivo devem
+ser escritas todas as regras de modificação de dicionário a serem utilizadas.
+Tais regras encontram-se abaixo descritas.
+
+Regras de modificação de palavras:
+:	Não realiza mudanças na palavra. Útil como primeira regra ou para
+	demarcar caracteres invisíveis. Ex: "s_ :" (substitui o caractere "_"
+	por um espaço em branco
+
+c	"Capitalização". Coloca o primeiro caracter da palavra em caixa alta e
+	os demais em caixa baixa. Ex: "abc" torna-se "Abc".
+
+C	Capitalização invertida. Coloca o primeiro caracter da palavra em caixa 
+	baixa e os restantes em caixa alta. Ex: "abc" torna-se "aBC".
+
+d	Duplicação. Coloca uma cópia da palavra ao fim da mesma. Ex: "abc"
+	torna-se "abcabc".
+
+f	Reflexão. Coloca uma cópia da palavra invertida ao fim da mesma. Ex: 
+	"abc" torna-se "abccba".
+
+iNX	Inserção. Insere o caracter X na posição N da palavra. N deve ser um
+	número de um digito em base hexadecimal.
+
+l	Coloca a palavra toda em caixa baixa.
+
+oNX	Substitui o caracter na posição N por X. N deve ser um número de um 
+	digito em base hexadecimal.
+
+r	Reversão. Inverte a palavra.
+
+sXY	Substituição. Substitui todas as instâncias do caracter X pelo caracter
+	Y.
+
+u	Coloca a palavra toda em caixa alta.
+
+$X	Concatena o caracter X à palavra.
+
+^X	Coloca o caracter X antes da palavra.
+
+[	Elimina o primeiro caracter da palavra.
+
+]	Elimina o último caracter da palavra.
+
+@X	Elimina todas as instâncias do caracter X da palavra.
+
+'N	Trunca a palavra na posição N.
+
+
+Uso das regras:
+	Cada linha do arquivo "rules.qp" será aplicada de uma só vez a cada
+palavra do dicionário. As regras descritas acima podem ser usadas sozinhas ou
+concomitantemente, sendo, neste caso, aplicadas recursivamente sobre a mesma
+palavra. Por exemplo, a primeira linha do arquivo de regras pode conter a regra
+":" e a segunda linha pode conter uma regra tão intrincada quanto 
+"lsa4se3si1so0st7`9[$.".
+
+Estado da execução:
+	O sistema salva automaticamente um ponto de referência ("checkpoint") a
+cada regra aplicada sobre o dicionário. Se por alguma razão o sistema for parado
+antes de ocorrer uma quebra ou chegar ao fim da busca, na próxima execução a
+busca será reiniciada deste ponto de referência.
+
+Cache de quebras:
+	O sistema possui uma cache que guarda todas as quebras que obtiveram
+sucesso. Esta cache sempre é verificada antes de se iniciar qualquer busca.
+--------------------------------------------------------------------------------

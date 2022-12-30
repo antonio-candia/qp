@@ -1,0 +1,3 @@
+qpseq: busca por dicionário, precisa de tres argumentos(arquivo de dicionario, hash, tipo do hash (crypt ou md5))
+exemplo de execução:
+java -classpath .:..:../plugins qpseq /usr/share/dict/words qptestando123 crypt
